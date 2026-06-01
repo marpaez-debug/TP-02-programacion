@@ -21,7 +21,9 @@
     <div class="seccion">
       <div class="botones">
         <button id="btn-todos">Mostrar todos</button>
-        <button id="btn-frutas">Mostrar solo dramas</button>
+        <button id="btn-drama">Mostrar solo drama</button>
+        <button id="btn-suspenso">Mostrar solo suspenso</button>
+        <button id="btn-comedia">Mostrar solo comedia</button>
       </div>
       <div id="lista-elementos"></div>
     </div>
@@ -29,7 +31,7 @@
 <!-- Ejercicio 3: listado de series filtradas por categoria con filter -->
 
   <script>
-    var elementos = [
+   var elementos = [
   { nombre: "Euphoria",        categoria: "drama" },
   { nombre: "Breaking Bad",    categoria: "drama" },
   { nombre: "Stranger Things", categoria: "suspenso" },
@@ -38,29 +40,44 @@
   { nombre: "Friends",         categoria: "comedia" }
 ];
 
-    var contenedor = document.getElementById("lista-elementos");
+var contenedor = document.getElementById("lista-elementos");
 
-    function renderizar(lista) {
-      contenedor.innerHTML = "";
-      lista.forEach(function(item) {
-        var div = document.createElement("div");
-        div.className = "card";
-        div.innerHTML = "<h3>" + item.nombre + "</h3><p>Categoría: " + item.categoria + "</p>";
-        contenedor.appendChild(div);
-      });
-    }
+function renderizar(lista) {
+  contenedor.innerHTML = "";
+  lista.forEach(function(item) {
+    var div = document.createElement("div");
+    div.className = "card";
+    div.innerHTML = "<h3>" + item.nombre + "</h3><p>Categoría: " + item.categoria + "</p>";
+    contenedor.appendChild(div);
+  });
+}
 
-    document.getElementById("btn-todos").addEventListener("click", function() {
-      renderizar(elementos);
-    });
+document.getElementById("btn-todos").addEventListener("click", function() {
+  renderizar(elementos);
+});
 
-   document.getElementById("btn-drama").addEventListener("click", function() {
+document.getElementById("btn-drama").addEventListener("click", function() {
   var soloDrama = elementos.filter(function(item) {
     return item.categoria === "drama";
   });
   renderizar(soloDrama);
 });
-    renderizar(elementos);
+
+document.getElementById("btn-suspenso").addEventListener("click", function() {
+  var soloSuspenso = elementos.filter(function(item) {
+    return item.categoria === "suspenso";
+  });
+  renderizar(soloSuspenso);
+});
+
+document.getElementById("btn-comedia").addEventListener("click", function() {
+  var soloComedia = elementos.filter(function(item) {
+    return item.categoria === "comedia";
+  });
+  renderizar(soloComedia);
+});
+
+renderizar(elementos);
   </script>
 
 </body>
