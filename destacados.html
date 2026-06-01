@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ejercicio 2: Tarjetas seleccionables</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="contenedor-principal">
+    <h1>Ejercicio 2: Tarjetas seleccionables</h1>
+    <p class="descripcion">Hacer clic en las tarjetas para marcar o desmarcar con <code>classList.toggle</code>.</p>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="destacados.html">Ejercicio 2</a>
+      <a href="listado.html">Ejercicio 3</a>
+    </nav>
+
+    <div class="seccion">
+      <p id="contador">Seleccionadas: 0</p>
+      <div id="cards-container"></div>
+    </div>
+  </div>
+
+  <script>
+    var items = [
+      { titulo: "Serie: Euphoria",        detalle: "Drama juvenil con historias intensas y emocionales." },
+      { titulo: "Juego: Counter-Strike 2",         detalle: "Shooter táctico de equipos con partidas competitivas." },
+      { titulo: "Canción: Adventure of a lifetime",    detalle: "Pop rock alegre con ritmo energético y positivo." },
+      { titulo: "Comida: Pizza",  detalle: "Plato popular con masa, queso y diversos ingredientes." }
+    ];
+
+    var contenedor = document.getElementById("cards-container");
+    var contadorEl = document.getElementById("contador");
+
+    function actualizarContador() {
+      var n = document.querySelectorAll(".card.seleccionada").length;
+      contadorEl.textContent = "Seleccionadas: " + n;
+    }
+
+    items.forEach(function(item) {
+      var div = document.createElement("div");
+      div.className = "card";
+      div.innerHTML = "<h3>" + item.titulo + "</h3><p>" + item.detalle + "</p>";
+      div.addEventListener("click", function() {
+        div.classList.toggle("seleccionada");
+        actualizarContador();
+      });
+      contenedor.appendChild(div);
+    });
+  </script>
+
+</body>
+</html>
