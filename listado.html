@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ejercicio 3: Listado con filtro</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="contenedor-principal">
+    <h1>Ejercicio 3: Listado con filtro</h1>
+    <p class="descripcion">Mostrar todos los elementos o solo una categoría usando <code>filter</code>.</p>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="destacados.html">Ejercicio 2</a>
+      <a href="listado.html">Ejercicio 3</a>
+    </nav>
+
+    <div class="seccion">
+      <div class="botones">
+        <button id="btn-todos">Mostrar todos</button>
+        <button id="btn-frutas">Mostrar solo dramas</button>
+      </div>
+      <div id="lista-elementos"></div>
+    </div>
+  </div>
+
+  <script>
+    var elementos = [
+  { nombre: "Euphoria",        categoria: "drama" },
+  { nombre: "Breaking Bad",    categoria: "drama" },
+  { nombre: "Stranger Things", categoria: "suspenso" },
+  { nombre: "Dark",            categoria: "suspenso" },
+  { nombre: "The Office",      categoria: "comedia" },
+  { nombre: "Friends",         categoria: "comedia" }
+];
+
+    var contenedor = document.getElementById("lista-elementos");
+
+    function renderizar(lista) {
+      contenedor.innerHTML = "";
+      lista.forEach(function(item) {
+        var div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = "<h3>" + item.nombre + "</h3><p>Categoría: " + item.categoria + "</p>";
+        contenedor.appendChild(div);
+      });
+    }
+
+    document.getElementById("btn-todos").addEventListener("click", function() {
+      renderizar(elementos);
+    });
+
+   document.getElementById("btn-drama").addEventListener("click", function() {
+  var soloDrama = elementos.filter(function(item) {
+    return item.categoria === "drama";
+  });
+  renderizar(soloDrama);
+});
+    renderizar(elementos);
+  </script>
+
+</body>
+</html>
