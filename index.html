@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ejercicio 1: Menú de meriendas</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="contenedor-principal">
+    <h1>Ejercicio 1: Menú de meriendas</h1>
+    <p class="descripcion">Mostrar una lista desde un arreglo y, al hacer clic, indicar cuántos elementos tiene.</p>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="destacados.html">Ejercicio 2</a>
+      <a href="listado.html">Ejercicio 3</a>
+    </nav>
+
+    <div class="seccion">
+      <h2>Meriendas disponibles</h2>
+      <div id="lista-meriendas"></div>
+      <button id="btn-cantidad">Mostrar cantidad</button>
+      <p id="resultado"></p>
+    </div>
+  </div>
+
+  <script>
+    var meriendas = ["Yogur", "Fruta", "Tostadas", "Barrita de cereal", "Licuado"];
+
+    var contenedor = document.getElementById("lista-meriendas");
+    var ul = document.createElement("ul");
+
+    meriendas.forEach(function(m) {
+      var li = document.createElement("li");
+      li.textContent = m;
+      ul.appendChild(li);
+    });
+
+    contenedor.appendChild(ul);
+
+    document.getElementById("btn-cantidad").addEventListener("click", function() {
+      document.getElementById("resultado").textContent = "Cantidad: " + meriendas.length + " meriendas.";
+    });
+  </script>
+
+</body>
+</html>
